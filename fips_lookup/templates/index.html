@@ -1,0 +1,44 @@
+{% extends "layout.html" %}
+{% block content %}
+  <div id="search">
+    <h1>FIPS Code Lookup</h1>
+    <form action="lookup" method="get" name="get_fips_code">
+      {{form.hidden_tag()}}
+      {{form.search_field(placeholder="search")}}
+      <input type="submit" value="Go">
+    </form>
+  </div>
+  {% if state_fips: %}
+    <h3>State FIPS:</h3>
+      <ul>
+      {% for state in state_fips %}
+        <li>
+          {% set state_array = state.split(":") %}
+          <span class="fips-name">{{ state_array[0] }}</span>: <span>{{ state_array[1] }}</span>
+        </li>
+      {% endfor %}
+      </ul>
+  {% endif %}
+  {% if county_fips: %}
+    <h3>County FIPS:</h3>
+    <ul>
+      {% for county in county_fips %}
+        <li>
+          {% set county_array = county.split(":") %}
+          <span class="fips-name">{{ county_array[0] }}</span>: <span>{{ county_array[1] }}</span>
+        </li>
+      {% endfor %}
+    </ul>
+  {% endif %}
+  {% if place_fips: %}
+    <h3>Place FIPS:</h3>
+    <ul>
+      {% for place in place_fips %}
+        <li>
+          {% set place_array = place.split(":") %}
+          <span class="fips-name">{{ place_array[0] }}</span>: <span>{{ place_array[1] }}</span>
+        </li>
+      {% endfor %}
+    </ul>
+  {% endif %}
+{% endblock %}
