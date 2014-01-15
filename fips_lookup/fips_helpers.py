@@ -1,4 +1,3 @@
-
 import data
 import re
 
@@ -29,4 +28,4 @@ def get_full_fips_code_and_place(place_name, row, fips_key):
         state_name = state_row["Name"]
         break
     place_name = place_name + ", " + state_name 
-  return place_name + ": " + fips_code
+  return (place_name + ": " + fips_code).decode('utf8')

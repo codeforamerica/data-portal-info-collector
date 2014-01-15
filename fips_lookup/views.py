@@ -1,7 +1,12 @@
-from fips_lookup import app
 from flask import render_template, redirect, url_for, request
 from forms import FipsFinderForm
 from fips_helpers import find_state_county_place_fips
+from logging import debug
+
+from flask import Flask
+
+app = Flask(__name__)
+app.secret_key = 'EWOUB'
 
 @app.route('/', methods = ['GET'])
 @app.route('/index', methods = ['GET'])
