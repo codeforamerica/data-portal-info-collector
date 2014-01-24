@@ -12,6 +12,7 @@ form input[type="text"], input[type="submit"]
 
 form input[type="text"]
 {
+  width: 200px;
   border-width: 1px;
   border-style: solid;
   border-color: #999595;
