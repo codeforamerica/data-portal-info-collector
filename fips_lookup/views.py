@@ -1,7 +1,8 @@
 from flask import render_template, redirect, url_for, request
-from forms import FipsFinderForm
+from forms import FipsFinderForm, DataPortalForm
 from fips_helpers import find_state_county_place_fips
 from logging import debug
+from wufoo_helpers import submit_form_to_wufoo
 
 from flask import Flask
 
@@ -23,3 +24,20 @@ def lookup():
                        form = form, state_fips = fips_codes['state'],
                        county_fips = fips_codes['county'],
                        place_fips = fips_codes['place'])
+
+@app.route('/new', methods = ['GET'])
+def new():
+  form = DataPortalForm(Field205="Looks Good!")
+  return render_template('new.html', title = 'Data Portal Hunt', form = form)
+
+@app.route('/create', methods = ['POST'])
+def create():
+  form = DataPortalForm(request.form)
+  if form.validate():
+    submit_form_to_wufoo(request.form)
+    return redirect('/thanks')
+  return render_template('new.html', title = 'Data Portal Hunt', form = form)
+
+@app.route('/thanks', methods = ['GET'])
+def thanks():
+  return render_template('thanks.html', title = 'thanks')

@@ -1,0 +1,184 @@
+{% extends "data_layout.html" %}
+{% block content %}
+<form id="form134" name="form134" class="wufoo leftLabel page" accept-charset="UTF-8" enctype="multipart/form-data" method="post" novalidate action="create">
+  <header id="header" class="info">
+    <h2>Data Portal Hunt</h2>
+    <div>Code for America is looking for data portals, nationwide. Help us find them.</div>
+  </header>
+  {{form.hidden_tag()}}
+  <ul>
+    {% set place_class = "" %}
+    {% if form.Field1.errors %}
+      {% set place_class = "error"%}
+    {% endif %}
+    <li id="foli1" class="{{ place_class }}">
+      <label class="desc" id="title1" for="Field1">
+        Place Name<span class="req">*</span>
+      </label>
+      <div>
+        {{form.Field1(class_="field text medium", id="autocomplete", placeholder="Washington")}}
+        <br /><small>Town, county, state etc. that publishes data to this portal.</small>
+      </div>
+      {% for error in form.Field1.errors %}
+        <p class="error">{{ error }}</p>
+      {% endfor %}
+    </li>
+    {% set url_class = "" %}
+    {% if form.Field2.errors %}
+      {% set url_class = "error"%}
+    {% endif %}
+    <li id="foli2" class="{{ url_class }}">
+      <label class="desc" id="title2" for="Field2">
+        Portal URL<span class="req">*</span>
+      </label>
+      <div>
+        {{form.Field2(class_="field text medium")}}
+      </div>
+      {% for error in form.Field2.errors %}
+        <p class="error">{{ error }}</p>
+      {% endfor %}    
+    </li>
+    <li id="foli4" class="notranslate">
+    <fieldset>
+      <![if !IE | (gte IE 8)]>
+      <legend id="title4" class="desc">
+      Included Data Sets (check all that apply)
+      </legend>
+      <![endif]>
+      <!--[if lt IE 8]>
+      <label id="title4" class="desc">
+      Included Data Sets (check all that apply)
+      </label>
+      <![endif]-->
+      <div>
+        <span>
+          {{form.Field4(class_="field checkbox", value="Crime Data")}}
+          <label class="choice" for="Field4">Crime Data</label>
+        </span>
+        <span>
+          {{form.Field5(class_="field checkbox", value="Restaurant Inspections")}}
+          <label class="choice" for="Field5">Restaurant Inspections</label>
+        </span>
+        <span>
+          {{form.Field6(class_="field checkbox", value="Permits and Licenses")}}
+          <label class="choice" for="Field6">Permits and Licenses</label>
+        </span>
+        <span>
+          {{form.Field7(class_="field checkbox", value="311 Data")}}
+          <label class="choice" for="Field7">311 Data</label>
+        </span>
+        <span>
+          {{form.Field8(class_="field checkbox", value="Zoning Data")}}
+          <label class="choice" for="Field8">Zoning Data</label>
+        </span>
+        <span>
+          {{form.Field9(class_="field checkbox", value="Property Tax Data")}}
+          <label class="choice" for="Field9">Property Tax Data</label>
+        </span>
+        <span>
+          {{form.Field10(class_="field checkbox", value="Locations of Public Facilities")}}
+          <label class="choice" for="Field10">Locations of Public Facilities</label>
+        </span>
+        <span>
+          {{form.Field11(class_="field checkbox", value="Business Listings")}}
+          <label class="choice" for="Field11">Business Listings</label>
+        </span>
+        <span>
+          {{form.Field12(class_="field checkbox", value="Financial Transparency Data")}}
+          <label class="choice" for="Field12">Financial Transparency Data</label>
+        </span>
+        <span>
+          {{form.Field13(class_="field checkbox", value="Performance Metrics")}}
+          <label class="choice" for="Field13">Performance Metrics</label>
+        </span>
+        <span>
+          {{form.Field14(class_="field checkbox", value="Transit Data")}}
+          <label class="choice" for="Field14">Transit Data</label>
+        </span>
+        <span>
+          {{form.Field15(class_="field checkbox", value="Code Enforcement Data")}}
+          <label class="choice" for="Field15">Code Enforcement Data</label>
+        </span>
+      </div>
+    </fieldset>
+    </li>
+    <li id="foli105" class="notranslate">
+    <fieldset>
+      <![if !IE | (gte IE 8)]>
+      <legend id="title105" class="desc">
+      Included Data Formats (check all that apply)
+      </legend>
+      <![endif]>
+      <!--[if lt IE 8]>
+      <label id="title105" class="desc">
+      Included Data Formats (check all that apply)
+      </label>
+      <![endif]-->
+      <div>
+        <span>
+          {{form.Field105(class_="field checkbox", value="Machine-Readable and Open Format")}}
+          <label class="choice" for="Field105">Machine-Readable and Open Format</label>
+        </span>
+        <span>
+          {{form.Field106(class_="field checkbox", value="Machine-Readable but Proprietary Format")}}
+          <label class="choice" for="Field106">Machine-Readable but Proprietary Format</label>
+        </span>
+        <span>
+          {{form.Field107(class_="field checkbox", value="Human-Readable")}}
+          <label class="choice" for="Field107">Human-Readable</label>
+        </span>
+        <span>
+          {{form.Field108(class_="field checkbox", value="Other")}}
+          <label class="choice" for="Field108">Other</label>
+        </span>
+      </div>
+    </fieldset>
+    </li>
+    <li id="foli209" class="{{ press_class }}">
+      <label class="desc" id="title209" for="Field209">Press Release URL</label>
+      <div>
+        {{form.Field209(class_="field text medium")}}
+        <br /><small>Did the mayor, city council etc. make a press release about the open data portal? Add it here.</small>
+      </div>
+    </li>
+    {% set data_class = "" %}
+    {% if form.Field205.errors %}
+      {% set data_class = "error"%}
+    {% endif %}
+    <li id="foli205" class="{{ data_class }}">
+    <fieldset>
+      <![if !IE | (gte IE 8)]>
+      <legend id="title205" class="desc">
+      Data Completeness<span class="req">*</span>
+      </legend>
+      <![endif]>
+      <!--[if lt IE 8]>
+      <label id="title205" class="desc">
+      Data Completeness
+      </label>
+      <![endif]-->
+      <div>
+        {% for subfield in form.Field205 %}
+          <span>
+            {{ subfield() }}
+            {{ subfield.label(class_="choice") }}
+          </span>
+        {% endfor %}
+      </div>
+    </fieldset>
+    </li>
+    <li id="foli207" class="notranslate">
+      <label class="desc" id="title207" for="Field207">Comments</label>
+      <div> 
+        {{form.Field207(class_="field textarea medium")}}
+        <br /><small>Please share any thoughts you have about the data you reviewed.</small>
+      </div>
+    </li>
+    <li class="buttons ">
+      <div>
+        <input id="saveForm" name="saveForm" class="btTxt submit" type="submit" value="Submit"/>
+      </div>
+    </li>
+  </ul>
+</form>
+{% endblock %}
