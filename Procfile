@@ -1,1 +1,1 @@
-web: gunicorn fips_lookup:app
+web: gunicorn data_portal_info_collector:app
