@@ -2,7 +2,7 @@
 {% block content %}
 <form id="form134" name="form134" class="wufoo leftLabel page" accept-charset="UTF-8" enctype="multipart/form-data" method="post" novalidate action="create">
   <header id="header" class="info">
-    <h2>Data Portal Hunt</h2>
+    <h2>Data Portal Collector</h2>
     <div>Code for America is looking for data portals, nationwide. Help us find them.</div>
   </header>
   {{form.hidden_tag()}}
@@ -32,7 +32,7 @@
         Portal URL<span class="req">*</span>
       </label>
       <div>
-        {{form.Field2(class_="field text medium")}}
+        {{form.Field2(class_="field text medium", placeholder="http://www.data.gov")}}
       </div>
       {% for error in form.Field2.errors %}
         <p class="error">{{ error }}</p>
@@ -176,7 +176,7 @@
     </li>
     <li class="buttons ">
       <div>
-        <input id="saveForm" name="saveForm" class="btTxt submit" type="submit" value="Submit"/>
+        <input id="saveForm" name="saveForm" type="submit" value="Submit"/>
       </div>
     </li>
   </ul>
