@@ -3,8 +3,9 @@ from forms import FipsFinderForm, DataPortalForm
 from fips_helpers import find_state_county_place_fips
 from logging import debug
 from wufoo_helpers import submit_form_to_wufoo
+from portal_data_helpers import insert_data_portal_record, get_data_portals
 
-from flask import Flask
+from flask import Flask, Response
 
 app = Flask(__name__)
 app.secret_key = 'EWOUB'
@@ -25,19 +26,27 @@ def lookup():
                        county_fips = fips_codes['county'],
                        place_fips = fips_codes['place'])
 
-@app.route('/new', methods = ['GET'])
+@app.route('/data-portals/new', methods = ['GET'])
 def new():
   form = DataPortalForm(Field205="Looks Good!")
-  return render_template('new.html', title = 'Data Portal Hunt', form = form)
+  return render_template('data_portals/new.html', title = 'Data Portal Hunt', form = form)
 
-@app.route('/create', methods = ['POST'])
+@app.route('/data-portals/create', methods = ['POST'])
 def create():
   form = DataPortalForm(request.form)
   if form.validate():
     submit_form_to_wufoo(request.form)
+    insert_data_portal_record(request.form)
     return redirect('/thanks')
-  return render_template('new.html', title = 'Data Portal Hunt', form = form)
+  return render_template('data_portals/new.html', title = 'Data Portal Hunt', form = form)
 
 @app.route('/thanks', methods = ['GET'])
 def thanks():
-  return render_template('thanks.html', title = 'thanks')
+  return render_template('data_portals/thanks.html', title = 'Thanks')
+
+@app.route('/data-portals/index')
+def data_portals_list():
+  portal_dict = get_data_portals()
+  return render_template('data_portals/index.html', title = 'Data Portals', portal_dict = portal_dict)
+
+  
