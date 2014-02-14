@@ -1,14 +1,7 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-	<meta charset="utf-8" />
-	<title>Portal Hunt</title>
-    <link rel="stylesheet" type="text/css" href="static/styles.css">
-</head>
-<body>
-<div id="content">
+{% extends "page_layout.html" %}
+{% block content %}
 
-<p>Open data is the raw material of civic hacking.
+<h2>Open data is the raw material of civic hacking.</h2>
 
 <p>As we prepare for Code Across 2014, Code for America wants to collect all of the nationwide data that’s ripe for excellent civic hacking. We're collecting links to open data catalogs throughout the United States. Help us map national open data coverage by finding data catalogs, and connecting them to governments of states, counties, cities, and other places:
 
@@ -43,6 +36,4 @@
 <li>	<a href="http://data.openoakland.org">data.openoakland.org</a>
 </ul>
 
-</div>
-</body>
-</html>
+{% endblock %}
