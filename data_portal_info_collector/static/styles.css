@@ -1,44 +1,21 @@
-body
-{
-  font-family: georgia;
+td, th {
+  padding-right: 1em;
+  width: 20%;
 }
 
-form input[type="text"], input[type="submit"]
-{
-  border-radius: 0.25rem;
-  display: inline-block;
-  font-size: 16px;
+.portal-url {
+  width: 25%;
 }
 
-form input[type="text"]
-{
-  width: 200px;
-  border-width: 1px;
-  border-style: solid;
-  border-color: #999595;
-  padding-left: 12px;
-  padding-right: 15px;
-  vertical-align: middle;
-  min-height: 1.7rem;
-
+tr:nth-child(odd) td {
+  background: #EAEAEA
 }
 
-form input[type="submit"]
-{
-  background-color: #399fd3;
-  border: none;
-  color: white;
-  padding: 0 24px;
-  min-height: 1.9rem;
-  vertical-align: middle;
-
+ul {
+  margin-top: 0;
 }
 
-.fips-name {
-  color: #6D6E71
-}
-
-#content {
-  display: block;
-  margin-left: 20px;
+ul li {
+  line-height: normal;
+  background-position: left 0.35em;
 }

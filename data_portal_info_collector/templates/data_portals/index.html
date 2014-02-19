@@ -1,21 +1,37 @@
-{% extends "data_portals/data_layout.html" %}
+{% extends "page_layout.html" %}
 {% block content %}
   {% for state, data_portals in portal_dict.iteritems() %}
   <h3>{{ state }}</h3>
   <table>
     <tr>
       <th>Place</th>
-      <th>Portal URL</th>
+      <th class="portal-url">Portal URL</th>
       <th>Data Set Types</th>
       <th>Included Formats</th>
-      <th>Data Completeness</th>
+      <th>Complete?</th>
     </tr>
     {% for data_portal in data_portals %}
       <tr>
         <td>{{ data_portal[1] }}</td>
-        <td>{{ data_portal[2] }}</td>
-        <td>{{ data_portal[3] }}</td>
-        <td>{{ data_portal[4] }}</td>
+        <td class="portal-url"><a href="{{ data_portal[2] }}">{{ truncate_url(data_portal[2]) }}</a></td>
+        <td>
+          <ul>
+            {% for item in string_to_list(data_portal[3]) %}
+              <li>
+                {{ item }}
+              </li>
+            {% endfor %}
+          </ul>
+        </td>
+        <td>
+          <ul>
+            {% for item in string_to_list(data_portal[4]) %}
+              <li>
+                {{ item }}
+              </li>
+            {% endfor %}
+          </ul>
+        </td>
         <td>{{ data_portal[6] }}</td>
       </tr>
     {% endfor %}  
