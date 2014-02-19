@@ -3,6 +3,7 @@ import re
 import csv
 import os
 from time import gmtime, strftime
+import io
 
 def insert_data_portal_record(form_data):
   conn = get_db_connection()
@@ -33,6 +34,15 @@ def get_state_from_place(place):
     for row in reader:
       if row[2] == state_fips:
         return row[8]
+
+def get_data_portal_csv():
+  output = io.BytesIO()
+  writer = csv.writer(output)
+  csvdata = get_data_portals()
+  for key, records in csvdata.iteritems():
+    for record in records:
+      writer.writerow(record)
+  return output.getvalue()
 
 def get_data_portals():
   conn = get_db_connection()
