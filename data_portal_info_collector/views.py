@@ -52,4 +52,12 @@ def data_portals_list():
 @app.route('/data-portals/entries.csv')
 def data_portals_csv():
   return Response(get_data_portal_csv(), mimetype='text/csv')
+
+@app.context_processor
+def utility_processor():
+  def string_to_list(items_string):
+    return items_string.split(',')
+  def truncate_url(url):
+    return (url[:22] + '..') if len(url) > 22 else url
+  return dict(string_to_list=string_to_list, truncate_url=truncate_url)
   
