@@ -26,7 +26,7 @@ def lookup():
                        county_fips = fips_codes['county'],
                        place_fips = fips_codes['place'])
 
-@app.route('/data-portals/new', methods = ['GET'])
+@app.route('/new', methods = ['GET'])
 def new():
   form = DataPortalForm(Field205="Looks Good!")
   return render_template('data_portals/new.html', title = 'Data Portal Hunt', form = form)
