@@ -19,3 +19,24 @@ ul li {
   line-height: normal;
   background-position: left 0.35em;
 }
+
+#thanks {
+  text-align: center;
+}
+
+#thanks img {
+  margin-bottom: 1em;
+}
+
+#portal-index-heading {
+  display: block;
+  margin-bottom: 2em;
+}
+
+#portal-index-heading h2 {
+  display: inline;
+}
+
+[class="icon-download2"]:before {
+  margin-right: 0;
+}

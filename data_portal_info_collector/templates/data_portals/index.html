@@ -1,5 +1,9 @@
 {% extends "page_layout.html" %}
 {% block content %}
+  <div id="portal-index-heading">
+    <h2>Found Data Portals</h2>
+    <a href="/data-portals/entries.csv" class="icon-download2">Download csv</a>
+  </div>
   {% for state, data_portals in portal_dict.iteritems() %}
   <h3>{{ state }}</h3>
   <table>
