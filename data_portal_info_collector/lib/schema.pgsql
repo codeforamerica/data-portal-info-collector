@@ -12,3 +12,7 @@ CREATE TABLE IF NOT EXISTS data_portals (
 ALTER TABLE data_portals ADD COLUMN state varchar(30);
 
 ALTER TABLE data_portals ADD COLUMN created_at timestamp;
+
+ALTER TABLE data_portals ALTER COLUMN press_release_url SET DATA text;
+ALTER TABLE data_portals ALTER COLUMN portal_url SET DATA text;
+ALTER TABLE data_portals ALTER COLUMN place SET DATA text;
