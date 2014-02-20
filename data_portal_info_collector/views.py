@@ -31,7 +31,7 @@ def new():
   form = DataPortalForm(Field205="Looks Good!")
   return render_template('data_portals/new.html', title = 'Data Portal Hunt', form = form)
 
-@app.route('/data-portals/create', methods = ['POST'])
+@app.route('/create', methods = ['POST'])
 def create():
   form = DataPortalForm(request.form)
   if form.validate():
