@@ -39,6 +39,7 @@ def get_data_portal_csv():
   output = io.BytesIO()
   writer = csv.writer(output)
   csvdata = get_data_portals()
+  writer.writerow(['id', 'place', 'portal url', 'data sets', 'included formats', 'press release url', 'data completeness', 'comments', 'state', 'created at'])
   for key, records in csvdata.iteritems():
     for record in records:
       writer.writerow(record)
