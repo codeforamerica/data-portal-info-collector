@@ -15,13 +15,12 @@ def insert_data_portal_record(form_data):
   included_formats_array = [form_data.get("Field" + str(x)) for x in range(105, 109)
                     if form_data.get("Field" + str(x)) is not None]
   included_formats = ','.join(included_formats_array)
-  insert_statement = cur.mogrify("""insert into data_portals (place, portal_url, data_sets, included_formats,
-                                press_release_url, data_completeness, comments, state, created_at) 
-                                values ('%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s')""" % \
-                                (form_data['Field1'], form_data["Field2"], data_sets, 
-                                 included_formats, form_data["Field209"], form_data["Field205"],
-                                 form_data["Field207"], state, strftime('%Y-%m-%d %H:%M:%S', gmtime())))
-  cur.execute(insert_statement)
+  cur.execute("""insert into data_portals (place, portal_url, data_sets, included_formats,
+              press_release_url, data_completeness, comments, state, created_at) 
+              values (%s, %s, %s, %s, %s, %s, %s, %s, %s)""", \
+              (form_data['Field1'], form_data["Field2"], data_sets,
+               included_formats, form_data["Field209"], form_data["Field205"],
+               form_data["Field207"], state, strftime('%Y-%m-%d %H:%M:%S', gmtime())))
   conn.commit()
   conn.close()
 
