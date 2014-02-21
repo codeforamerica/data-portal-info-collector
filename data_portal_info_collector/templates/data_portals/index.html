@@ -10,7 +10,7 @@
     <a href="https://creativecommons.org/publicdomain/zero/1.0/">licensed CC0</a>.
   </p>
 
-  {% for state, data_portals in portal_dict.iteritems() %}
+  {% for state, data_portals in sorted(portal_dict.items()) %}
   <h3>{{ state }}</h3>
   <table>
     <tr>
