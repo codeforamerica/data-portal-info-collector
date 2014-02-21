@@ -40,3 +40,7 @@ ul li {
 [class="icon-download2"]:before {
   margin-right: 0;
 }
+
+.ui-menu-item {
+  background-image: none;
+}
