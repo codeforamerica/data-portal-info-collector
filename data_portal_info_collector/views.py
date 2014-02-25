@@ -46,8 +46,8 @@ def thanks():
 
 @app.route('/data-portals/index')
 def data_portals_list():
-  portal_dict = get_data_portals()
-  return render_template('data_portals/index.html', title = 'Data Portals', portal_dict = portal_dict)
+  ordered_portal_dict = get_data_portals()
+  return render_template('data_portals/index.html', title = 'Data Portals', ordered_portal_dict = ordered_portal_dict)
 
 @app.route('/data-portals/entries.csv')
 def data_portals_csv():

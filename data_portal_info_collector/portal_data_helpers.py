@@ -4,6 +4,7 @@ import csv
 import os
 from time import gmtime, strftime
 import io
+from collections import OrderedDict
 
 def insert_data_portal_record(form_data):
   conn = get_db_connection()
@@ -61,4 +62,5 @@ def get_data_portal_dict(data_portals):
       portal_dict[state].append(portal)
     else:
       portal_dict[state] = [portal]
-  return portal_dict
+  ordered_dict = OrderedDict(sorted(portal_dict.items(), key=lambda t: t[0]))
+  return ordered_dict
