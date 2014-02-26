@@ -9,3 +9,7 @@ def get_db_connection():
   conn = psycopg2.connect(database=url.path[1:], user=url.username, password=url.password,
                           host=url.hostname, port=url.port)
   return conn
+
+def get_db_cursor():
+  conn = get_db_connection()
+  return conn.cursor()

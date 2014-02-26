@@ -23,7 +23,6 @@ def insert_data_portal_record(form_data):
                included_formats, form_data["Field209"], form_data["Field205"],
                form_data["Field207"], state, strftime('%Y-%m-%d %H:%M:%S', gmtime())))
   conn.commit()
-  conn.close()
 
 def get_state_from_place(place):
   state_fips = re.search('\d{2}', place).group(0)
@@ -46,12 +45,10 @@ def get_data_portal_csv():
   return output.getvalue()
 
 def get_data_portals():
-  conn = get_db_connection()
-  cur = conn.cursor()
+  cur = get_db_cursor()
   select_statement = "select * from data_portals order by state, created_at"
   cur.execute(select_statement)
   data_portals = cur.fetchall()
-  conn.close
   return get_data_portal_dict(data_portals)
 
 def get_data_portal_dict(data_portals):
